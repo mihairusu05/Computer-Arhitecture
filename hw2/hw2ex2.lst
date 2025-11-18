@@ -51,7 +51,7 @@
     51 0000003C 8B0D[0B000000]                  mov ECX, [x + 4]
     52                                          
     53 00000042 01D8                            add EAX, EBX
-    54 00000044 01CA                            add EDX, ECX
+    54 00000044 11CA                            adc EDX, ECX
     55                                      
     56                                          ; exit(0)
     57 00000046 6A00                            push    dword 0      ; push the parameter for exit onto the stack

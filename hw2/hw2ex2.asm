@@ -51,7 +51,7 @@ segment code use32 class=code
         mov ECX, [x + 4]
         
         add EAX, EBX
-        add EDX, ECX
+        adc EDX, ECX
     
         ; exit(0)
         push    dword 0      ; push the parameter for exit onto the stack

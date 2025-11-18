@@ -17,16 +17,16 @@ segment data use32 class=data
 ; our code starts here
 
 ;3. [-1+d-2*(b+1)]/a data types: a,b,c - byte, d - word and ->>>> -3 result
-;second expression: (8-a*b*100+c)/d+x; a,b,d-byte; c-doubleword; x-qword
 
 segment code use32 class=code
     start:
+    ;expr1
         mov AL, [b]
         add AL, 1
         mov Bl, 2
         imul Bl
         
-        ;2*(b+1)->>
+        ;2*(b+1)
         
         mov BX, AX
         
@@ -39,8 +39,6 @@ segment code use32 class=code
         mov CL, [a]
         idiv CL
         
-        ;(-1 + d - 2*(b + 1))/a
-    
         ; exit(0)
         push    dword 0      ; push the parameter for exit onto the stack
         call    [exit]       ; call exit to terminate the program

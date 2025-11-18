@@ -17,16 +17,16 @@
     17                                  ; our code starts here
     18                                  
     19                                  ;3. [-1+d-2*(b+1)]/a data types: a,b,c - byte, d - word and ->>>> -3 result
-    20                                  ;second expression: (8-a*b*100+c)/d+x; a,b,d-byte; c-doubleword; x-qword
-    21                                  
-    22                                  segment code use32 class=code
-    23                                      start:
+    20                                  
+    21                                  segment code use32 class=code
+    22                                      start:
+    23                                      ;expr1
     24 00000000 A0[01000000]                    mov AL, [b]
     25 00000005 0401                            add AL, 1
     26 00000007 B302                            mov Bl, 2
     27 00000009 F6EB                            imul Bl
     28                                          
-    29                                          ;2*(b+1)->>
+    29                                          ;2*(b+1)
     30                                          
     31 0000000B 6689C3                          mov BX, AX
     32                                          
@@ -39,8 +39,6 @@
     39 0000001B 8A0D[00000000]                  mov CL, [a]
     40 00000021 F6F9                            idiv CL
     41                                          
-    42                                          ;(-1 + d - 2*(b + 1))/a
-    43                                      
-    44                                          ; exit(0)
-    45 00000023 6A00                            push    dword 0      ; push the parameter for exit onto the stack
-    46 00000025 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
+    42                                          ; exit(0)
+    43 00000023 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    44 00000025 FF15[00000000]                  call    [exit]       ; call exit to terminate the program
