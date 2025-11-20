@@ -1,0 +1,28 @@
+     1                                  bits 32
+     2                                  global start
+     3                                  extern exit
+     4                                  import exit msvcrt.dll
+     5                                  
+     6                                  segment data use32 class=data
+     7 00000000 785634124D3C2B1A            S dd 12345678h, 1a2b3c4dh
+     8                                      len equ ($ - S) / 4
+     9 00000008 00<rept>                    D times len db 0
+    10                                  
+    11                                  segment code use32 class=code
+    12                                  start:
+    13 00000000 B902000000                  mov ecx, len       
+    14 00000005 E31C                        jecxz end_program  
+    15 00000007 BE00000000                  mov esi, 0         
+    16 0000000C BF00000000                  mov edi, 0         
+    17                                  
+    18                                  my_loop:
+    19 00000011 8B86[00000000]              mov eax, [S + esi] 
+    20 00000017 8887[08000000]              mov [D + edi], al  
+    21 0000001D 83C604                      add esi, 4         
+    22 00000020 47                          inc edi            
+    23                                  
+    24 00000021 E2EE                        loop my_loop       
+    25                                  
+    26                                  end_program:
+    27 00000023 6A00                        push dword 0
+    28 00000025 FF15[00000000]              call [exit]
