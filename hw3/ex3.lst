@@ -38,14 +38,14 @@
     38 0000003E 66C1E006                        shl ax, 6                 
     39 00000042 09C3                            or  ebx, eax  
     40                                              
-    41 00000044 B800000000                       mov eax , 0
+    41 00000044 B800000000                      mov eax , 0
     42                                  
-    43 00000049 0FB705[00000000]                movzx eax, word [A]       
-    44 00000050 C1E010                          shl eax, 16               
-    45 00000053 09C3                            or  ebx, eax              ; Paste into Result
+    43 00000049 A1[00000000]                    mov eax, [A]     
+    44 0000004E C1E010                          shl eax, 16               
+    45 00000051 09C3                            or  ebx, eax              
     46                                  
-    47 00000055 891D[04000000]                  mov [C], ebx
+    47 00000053 891D[04000000]                  mov [C], ebx
     48                                      
     49                                          ; exit(0)
-    50 0000005B 6A00                            push    dword 0      ; push the parameter for exit onto the stack
-    51 0000005D FF15[00000000]                  call    [exit]       ; call exit to terminate the program
+    50 00000059 6A00                            push    dword 0      ; push the parameter for exit onto the stack
+    51 0000005B FF15[00000000]                  call    [exit]       ; call exit to terminate the program
